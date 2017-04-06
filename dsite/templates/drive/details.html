@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Images</title>
+		<style type="text/css">
+			body {
+				color: #665544;
+				background-color: #d4d0c6;
+				background-image: url("images/backdrop.gif");
+				font-family: Georgia, "Times New Roman", serif;
+				text-align: center;}
+			.wrapper {
+				width: 1440px;
+				margin: 0px auto;}
+			.header {
+				margin: 40px 0px 20px 0px;}
+			.entry {
+				width: 1020px;
+				float: left;
+				margin: 10px;
+				height: 1220px;
+				background-image: url("images/shadow.png");
+				background-repeat: no-repeat;
+				background-position: bottom;}
+			figure {
+				display: block;
+				width: 1000px;
+				height: 1200px;
+				background-color: #e7e3d8;
+				padding: 9px;
+				text-align: left;}
+			figcaption {
+				background-image: url("images/icon.png");
+				padding-left: 20px;
+				background-repeat: no-repeat;}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="image_container">
+				<figure>
+                    <!--img src="/static/dirdir/test.jpg" alt="谁反对无产阶级专政" /-->
+                    <img src="/static/{{ image.path }}" alt="{{ image.title }}" />
+					<figcaption>{{ image.title }}</figcaption>
+				</figure>
+			</div>
+		</div>
+	</body>
+</html>
