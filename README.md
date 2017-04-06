@@ -15,7 +15,7 @@ https://github.com/wonjar/garbage-truck
 2.	dongying.py
 爬虫的主体部分。首先分析网站页面，所需爬两种网页，以start_url为首的目录页和url格式略有不同的大图页。
 目录页为瀑布流和分页，一开始我还担心瀑布流是用ajax异步加载的，结果一打开源码发现只是通过参数hiden，下滑加载只是个显示效果，好吧，被演了。定义parse()处理所有的目录页，将waterfall下不管隐藏没隐藏的其中所有指向大图页的herf提取出来，用urljoin合成完整链接用生成器加入处理大图页的parse_mm()的请求列表。提取下一页页码链接，传给自身请求列表。
-Parse_mm()接受链接爬上大图页，并获取以下传给items：将当前页存入图片所在url一项；<h1>标题；图片src存入Image_urls，待图片下载管道使用。
+Parse_mm()接受链接爬上大图页，并获取以下传给items：将当前页存入图片所在url一项；h1标题；图片src存入Image_urls，待图片下载管道使用。
 3.	pipeline.py
 处理爬虫得到的数据。在这里定义了三个类，作用如下：
 MyImagesPipeline：图片下载，从image_urls取出下载链接，下载完毕后将本地相对路径保存到image_paths，文件数据在images里也有一份。
