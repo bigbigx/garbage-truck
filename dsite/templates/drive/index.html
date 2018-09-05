@@ -15,7 +15,7 @@
 			.header {
 				margin: 40px 0px 20px 0px;}
 			.entry {
-				width: 440px;
+				width: 300px;
 				float: left;
 				margin: 10px;
 				height: 396px;
@@ -24,26 +24,40 @@
 				background-position: bottom;}
 			figure {
 				display: block;
-				width: 416px;
-				height: 350px;
+				width: 258px;
+				height: 380px;
 				background-color: #e7e3d8;
 				padding: 9px;
 				text-align: left;}
 			figure img {
-				width: 400px;
+				width: 250px;
 				height: 330px;
 				border: 1px solid #d6d6d6;}
 			figcaption {
 				background-image: url("images/icon.png");
 				padding-left: 20px;
 				background-repeat: no-repeat;}
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
 		</style>
 	</head>
 	<body>
 		<div class="wrapper">
             {% for image in image_list %}
 			<div class="entry">
-				<figure><a href="/details?id={{ image.id }}">
+				<figure><a href="/drive/details/{{ image.id }}/">
                     <img src="/static/{{ image.path }}" alt="{{ image.title }}" />
                     </a>
 					<figcaption>{{ image.title }}</figcaption>
@@ -51,5 +65,11 @@
 			</div>
             {% endfor %}
 		</div>
+<ul class="pagination">
+{% if number > 1 %}
+  <li><a href="/drive/index/{{number|add:'-1'}}/">上一页</a></li>
+{% endif %}
+  <li><a href="/drive/index/{{number|add:'1'}}">下一页</a></li>
+</ul>
 	</body>
 </html>
